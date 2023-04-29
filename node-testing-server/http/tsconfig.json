@@ -1,0 +1,18 @@
+{
+    "extends": "@tsconfig/node16/tsconfig.json",
+    "compilerOptions": {
+      "lib": ["esnext"],
+      "module": "esnext",
+      "outDir": "build",
+      "allowJs": true,
+      "types": ["node"], 
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true, 
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "typeRoots": ["./typings"]
+    },
+  }
