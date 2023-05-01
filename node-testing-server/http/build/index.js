@@ -36,6 +36,9 @@ async function httpGet(hostname, path, headers) {
     });
 }
 async function httpPost(hostname, path, body) {
+    let username = 'username';
+    let password = 'pissword';
+    let auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
     return new Promise((resolve, reject) => {
         const options = {
             hostname: hostname,
@@ -44,7 +47,8 @@ async function httpPost(hostname, path, body) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(body)
+                'Content-Length': Buffer.byteLength(body),
+                'Authorization': auth
             }
         };
         const req = http.request(options, (res) => {
@@ -84,7 +88,7 @@ async function httpPost(hostname, path, body) {
 }
 (async () => {
     try {
-        const getRes = await httpGet('127.0.0.1', '/', {});
+        const getRes = await httpGet('127.0.0.1', '/get', {});
         console.log(`getRes: ${getRes}`);
         let payload = JSON.stringify({
             "orderId": '12345',
